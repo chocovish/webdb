@@ -1,0 +1,22 @@
+{% extends 'webdb/master.html' %}
+
+{% block content %}
+
+<div class="ui container">
+    <form class="ui form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for f in form %}
+        <div class="field">
+            <label for="{{f.name}}">{{f.label}}</label>
+            {{f}}
+        </div>
+        {% endfor %}
+        <button class="ui medium orange button" type="submit">Create</button>
+    </form>
+</div>
+
+<script>
+    $('select.dropdown').dropdown();
+</script>
+
+{% endblock %}

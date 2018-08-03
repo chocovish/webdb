@@ -1,0 +1,52 @@
+{% extends 'webdb/master.html' %}
+
+
+{% block content %}
+<div class="ui hidden divider"></div>
+
+<div class="ui stackable doubling equal width grid container">
+
+<div class="ui four wide column">
+    <div class="ui rounded bordered image segment">
+        <img src="{{q.cover.url}}" alt="{{q.title}}">
+    </div>
+</div>
+
+<div class="ui column">
+    <h4 class="ui horizontal divider header">
+    <i class="bar chart icon"></i>  Description
+    </h4>
+    
+    <div class="ui large header">{{q.title}}
+<p class="sub header"><i class="hashtag icon" style="margin: 0px;padding: 0px"></i>{%for g in q.genre.all%}{{g}}, {%endfor%}</p>
+    </div>
+
+    <table class="ui definition table">
+        <tr>
+            <td class="two wide column">Platfom</td>
+            <td>{{q.platform}}</td>
+        </tr>
+        <tr>
+            <td class="two wide column">Language</td>
+            <td>{{q.language}}</td>
+        </tr>
+        <tr>
+            <td class="two wide column">Released</td>
+            <td>{{q.published}}</td>
+        </tr>
+    </table>
+    
+</div>
+
+</div>
+
+<!----description---->
+
+<div class="ui container">
+    <div class="ui horizontal divider">Plot</div>
+
+    <p>{{q.description}}</p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSeries Database</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
+</head>
+<body>
+    <div class="ui sticky teal inverted menu">
+        <div class="item header"><a href="{%url 'list'%}">WEBseries</a></div>
+        <div class="item"><a href="#">Top 100</a></div>
+        <div class="item"><a href="{%url 'create' %}">Add Series</a></div>
+        <div class="right menu">
+        <div class="item">
+            <div class="ui input icon">
+                <input type="text" placeholder="Search here">
+                <i class="search link icon"></i>
+            </div>
+        </div>
+        <div class="right item"> <i class="user icon"></i> login</div>
+        </div>
+    </div>
+
+    <script src="{% static 'css/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'css/semantic.min.js' %}"></script>
+    {% block content %}
+    {% endblock %}
+
+
+    
+</body>
+</html>

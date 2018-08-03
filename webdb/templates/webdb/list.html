@@ -1,0 +1,44 @@
+{% extends 'webdb/master.html' %}
+
+{% block content %}
+
+<div class="ui hidden divider"></div>
+
+<div class="ui container">
+<form action="" method="get" class="ui large fluid action input">
+  <input type="text" placeholder="Search Series Title or Genre .."> <button class="ui orange button">Search</button>
+</form>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui cards centered fluid container">
+    {% for q in queryset %}
+    <a class="card" href="{% url 'details' q.pk %}">
+        <div class="ui medium image">
+            <img src="{{q.cover.url}}">
+        </div>
+      <div class="content">
+        <div class="header">{{q.title}}</div>
+        <div class="meta">
+          <span class="category">
+            {%for g in q.genre.all %}
+            {{g}}, 
+            {% endfor %}
+          </span>
+        </div>
+        <div class="description">
+          <p>{{q.description | truncatechars:160}}</p>
+        </div>
+      </div>
+      <div class="extra content">
+          <p class="meta"><i class="terminal icon"></i> 712 users rated</p>
+      </div>
+    </a>
+    {% endfor %}
+    
+</div>
+
+{% endblock %}
+
+
