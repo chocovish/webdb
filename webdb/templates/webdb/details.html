@@ -34,6 +34,10 @@
             <td class="two wide column">Released</td>
             <td>{{q.published}}</td>
         </tr>
+        <tr>
+            <td class="two wide column">Rating</td>
+            <td><div class="ui star rating" data-rating="{{q.rating|stringformat:'d'}}" data-max-rating="10"></div></td>
+        </tr>
     </table>
     
 </div>
@@ -48,5 +52,11 @@
     <p>{{q.description}}</p>
 
 </div>
+
+<div class="ui hidden divider"></div>
+
+<script>
+    $(".rating").rating();
+</script>
 
 {% endblock %}

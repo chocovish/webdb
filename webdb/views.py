@@ -1,16 +1,27 @@
-from django.shortcuts import render,HttpResponse,HttpResponseRedirect
-from .models import item
+from django.shortcuts import render,HttpResponse
+from django.http import JsonResponse
+from .models import ItemModel
 from .forms import CreateForm
 
 
 def itemlist(request):
-    queryset = item.objects.all().order_by("-pk")
+    queryset = ItemModel.objects.all().order_by("-pk")
     return render(request, 'webdb/list.html', {'queryset':queryset})
 
 
 def details(request, pk):
-    queryset = item.objects.get(pk=pk)
+    queryset = ItemModel.objects.get(pk=pk)
     return render(request, 'webdb/details.html', {'q':queryset})
+
+def rateitem(request,pk,value):
+    value = int(value)
+    if value <= 10:
+        i = ItemModel.objects.get(pk=pk)
+        i.ratingcount += 1
+        i.rating = float(i.rating) + value/i.ratingcount
+        i.save()
+        return JsonResponse({'status':'ok'})
+    return JsonResponse({'status':'error'})
 
 
 def create(request):
