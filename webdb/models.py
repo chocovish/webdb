@@ -20,7 +20,7 @@ class ItemModel(models.Model):
     language = models.CharField(choices=lang_choice,max_length=20)
     platform = models.CharField(choices=plat_choice,max_length=10)
     link = models.URLField(default="https://notfound.com/notfound.html")
-    rating = models.DecimalField(decimal_places=2,max_digits=4)
+    rating = models.DecimalField(decimal_places=2,max_digits=4,default=0)
     ratingcount = models.IntegerField(default=0)
     def __str__(self): return self.title
 
@@ -34,9 +34,9 @@ class CommentModel(models.Model):
 
 
 class RatingModel(models.Model):
-    item = models.ForeignKey(ItemModel, on_delete=models.CASCADE)
+    item = models.ForeignKey(ItemModel,on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.SmallIntegerField(default=5)
+    rating = models.SmallIntegerField(default=0)
 
 
 class WatchList(models.Model):

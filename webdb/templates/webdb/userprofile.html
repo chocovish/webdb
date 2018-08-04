@@ -1,0 +1,30 @@
+{% extends 'webdb/master.html' %}
+
+{% block content %}
+
+<div class="ui container">
+    <h1 class="ui header">{{request.user}}</h1>
+    <div class="ui horizontal divider">WatchList</div>
+
+<div class="ui stackable doubling six cards">
+
+    {%for i in request.user.watchlist_set.all%}
+<a href="{%url 'details' i.item.pk%}" class="ui card">
+    <div class="ui image">
+        <img src="{{i.item.cover.url}}">
+    </div>
+    <div class="ui content">
+        <h2 class="meta">{{i.item}}</h2>
+    </div>
+    <div class="ui extra content">
+        <button class="ui button teal">Mark As Watched</button>
+    </div>
+</a>
+
+
+
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

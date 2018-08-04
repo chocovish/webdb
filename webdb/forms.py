@@ -11,4 +11,4 @@ class CreateForm(forms.ModelForm):
     language = forms.ChoiceField(widget=select, choices=lang_choice)
     class Meta:
         model = ItemModel
-        exclude = []
+        exclude = ['rating','ratingcount']
